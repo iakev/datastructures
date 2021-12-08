@@ -1,0 +1,25 @@
+Task 0
+
+Since we only looking up instances of the lists the runtime complexity is O(1)
+
+Task 1
+Using four for loops gives a worst case runtime analysis of O(9072)+O(9072)+O(5213)+O(5213) = O(28570) 
+
+Task2
+Using one four loop for the calls the worst case runtime analysis is:
+	O(5213)
+
+Task 3
+
+With using two for loops and sort()method the analysis becomes:
+ A = O(5213) + O(140) + O(140log140)
+ A = O(5353) + O(140log140)
+A = O(5353) + O(300.457)
+A = O(5853.457)
+
+Task 4
+
+For this task the solution has 3 for loops and also one sort() method applied, hence:
+ A = O(9072) + O(5213) + O(209) + O(209log209)
+A = O(14,978.91)
+

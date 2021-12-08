@@ -1,0 +1,23 @@
+Task 0
+
+Since we only looking up instances of the lists the runtime complexity is O(1)
+
+Task 1
+Using two for loops gives a worst case runtime analysis of O(n)+O(n) = O(n) 
+
+Task2
+Using two four loop for the calls the worst case runtime analysis is:
+	O(n) + O(n)  = O(n)
+
+Task 3
+
+With using two for loops, one nested for loop in another for loop and sort()method the analysis becomes:
+ A = O(n) + O(n) + O(nlogn) + O(n^2)
+ A = O(n^2)
+
+Task 4
+
+For this task the solution has 3 for loops and also one sort() method applied, hence:
+ A = O(n) + O(n) + O(n) + O(nlogn)
+A = O(nlogn)
+

@@ -1,12 +1,4 @@
-# %% [markdown]
-# ### Union and Intersection of Two Linked Lists
-# Your task for this problem is to fill out the union and intersection functions. The union of two sets A and B is the set of elements which are in A, in B, or in both A and B. The intersection of two sets A and B, denoted by A ∩ B, is the set of all objects that are members of both the sets A and B.
-# 
-# You will take in two linked lists and return a linked list that is composed of either the union or intersection, respectively. Once you have completed the problem you will create your own test cases and perform your own run time analysis on the code.
-# 
-# We have provided a code template below, you are not required to use it:
 
-# %%
 class Node:
     def __init__(self, value):
         self.value = value
@@ -50,9 +42,8 @@ class LinkedList:
         return size
 
 def union(llist_1, llist_2):
-    # Your Solution Here
     #for union we return a new linked list that contains all elemets in both llist_1 and llist_2
-    intermediate_list = []
+    intermediate_set = set()
     union_list = LinkedList()
     current_node1 = llist_1.head
     current_node2 = llist_2.head
@@ -63,63 +54,67 @@ def union(llist_1, llist_2):
 
     for i in range(size):
         if current_node1 != None:
-            intermediate_list.append(current_node1.value)
+            intermediate_set.add(current_node1.value)
             current_node1 = current_node1.next
 
         if current_node2 != None:
-            intermediate_list.append(current_node2.value)
+            intermediate_set.add(current_node2.value)
             current_node2 = current_node2.next
 
-    unique = set(intermediate_list)
 
-    for item in unique:
+    for item in intermediate_set:
         union_list.append(item)
 
     return union_list
 
 def intersection(llist_1, llist_2):
-    # Your Solution Here
     #return a linked list containing elements both in llist_1 and llist_2
     current_node1 = llist_1.head
     current_node2 = llist_2.head
-    intermediate_list = []
-    lis = []
+    intermediate_set = set()
+    lis = set()
     size1 = llist_1.size()
     size2 = llist_2.size()
     intersection_list = LinkedList()
     
     size = size1 if size1 > size2 else size2
 
+    #creating a set for the larger sized linked list
+
     for i in range(size):
         if size == size1:
             node = current_node1
             while node:
-                lis.append(node.value)
+                lis.add(node.value)
                 node = node.next
         else:
             node = current_node2
             while node:
-                lis.append(node.value)
+                lis.add(node.value)
                 node = node.next
 
     
+    #comparing values in other linked list to see if in above created set therefore 
+    #determining if an intersection has occured then adding the overlapping value in 
+    #newly created output intersection list
 
     for i in range(size):
         if size == size1:
             if current_node2 !=None:
-                if current_node2.value in lis: # this logic is flawed since there can be equal values but not evaluated simultaneously
-                    intermediate_list.append(current_node2.value)
+                if current_node2.value in lis:
+                    intermediate_set.add(current_node2.value)
                 current_node2 = current_node2.next
+            
 
         else:
             if current_node1 !=None:
-                if current_node1.value in lis: # this logic is flawed since there can be equal values but not evaluated simultaneously
-                    intermediate_list.append(current_node1.value)
+                if current_node1.value in lis: 
+                    intermediate_set.add(current_node1.value)
                 current_node1 = current_node1.next        
                 
-    unique = set(intermediate_list)
 
-    for item in unique:
+
+    for item in intermediate_set:
         intersection_list.append(item)
 
     
@@ -144,7 +139,11 @@ for i in element_2:
 print (union(linked_list_1,linked_list_2))
 print (intersection(linked_list_1,linked_list_2))
 
-# Test case 2
+#expected output not in order
+#6 -> 32 -> 4 -> 9 -> 6 -> 1 -> 11 -> 21 -> 3 -> 2 -> 35 -> 65 -> union
+#6 -> 4 -> 21 -> intersection
+
+# Test case 2 no intersection
 
 linked_list_3 = LinkedList()
 linked_list_4 = LinkedList()
@@ -160,9 +159,26 @@ for i in element_2:
 
 print (union(linked_list_3,linked_list_4))
 print (intersection(linked_list_3,linked_list_4))
+# 1 -> 7 -> 8 -> 9 -> 11 ->21 -> 3 -> 2 -> 4 ->35 -> 6 -> 65 -> 23 -> union
+# no intersection
 
+#Test case no input completely
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
 
-# %%
+element_3 = [None for _ in range(10)]
+element_4 = []
 
+for i in element_3:
+    linked_list_5.append(i)
+
+for i in element_4:
+    linked_list_6.append(i)
+
+print(union(linked_list_5,linked_list_6))
+print(intersection(linked_list_5,linked_list_6))
+
+# None -> union
+#no intersection
 
 

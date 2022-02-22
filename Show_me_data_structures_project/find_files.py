@@ -13,6 +13,8 @@ def find_files(suffix, path):
 
     Returns:
        a list of paths
+
+     NB: Please ensure the testdir is in the same folder as this .py file for optimum perfomance.  
     """
     paths_lists = []
     files = find_files_recursively(suffix,path,paths_lists) #call to initial recursion call
@@ -37,7 +39,20 @@ def find_files_recursively(suffix,path,lists):
     return lists
 
 
+# Test case 1 
 suffix = ".c"
 path = "./testdir"
 print(find_files(suffix,path))  
-print(len(find_files(suffix,path)))
+# returns [./testdir/subdir/a.c, ./testdir/subdir3/subsubdir1/b.c, ./testdir/subdir5/a.c, ./testdir/t1.c]
+
+# Test case 2
+suffix = ".h"
+path = "./testdir"
+print(find_files(suffix,path))
+# returns [./testdir/subdir1/a.h, ./testdir/subdir3/subsubdir1/b.h, ./testdir/subdir5/a.h, ./testdir/t1.h]
+
+#Test case 3 (no such file in directory)
+suffix = ".py"
+path = "./testdir"
+print(find_files(suffix,path))
+# returns [] no file present

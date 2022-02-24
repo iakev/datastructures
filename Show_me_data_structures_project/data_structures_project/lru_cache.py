@@ -5,7 +5,7 @@ class LRU_Cache:
         self.capacity = capacity
         self.cache_dict = {} # a dictionary to store the key-value pairs in the cache data structure.
         self.key_count = {} # a dictionary to associate a key with number of times it has been accessed
-        self.num_entries = 0 # to keep track of number of items in our cache
+        self.num_entries = 0 # to keep track of number of items in our cache 
 
     def get(self, key):
         # Retrieve item from provided key. Return -1 if nonexistent. 
@@ -36,11 +36,13 @@ class LRU_Cache:
                     least_key = k
                     if least_count == 0:
                         break
-
-            del self.cache_dict[least_key]
-            del self.key_count[least_key]
-            self.cache_dict[key] = value
-            self.key_count[key] = 0
+            if least_key != None:
+                del self.cache_dict[least_key]
+                del self.key_count[least_key]
+                self.cache_dict[key] = value
+                self.key_count[key] = 0
+            else:
+                print("Setting 0 or negative capacity not possible!!")
 
 
 ## Test Cases ##
@@ -141,4 +143,20 @@ print(cache3.get("20"))
 print(cache3.get("25"))
 #returns 26
 
+cache4 = LRU_Cache(0)
 
+#Test 4
+
+cache4.set("no",0)
+#returns Setting 0 or negative capacity not possible
+print(cache4.get("no"))
+#returns -1
+
+# Test 5
+
+cache5 = LRU_Cache(-1)
+
+cache5.set(100,1000)
+#returns Setting 0 or negative capacity not possible
+print(cache5.get(100))
+#returns -1

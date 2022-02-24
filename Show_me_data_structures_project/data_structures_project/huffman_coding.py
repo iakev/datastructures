@@ -269,4 +269,34 @@ if __name__ == "__main__":
         print ("The content of the decoded data is: {}\n".format(decoded_data))
     except TypeError:
         print("Can't unpack invalid output due to invalid encoding data")
+
+        # Test 3
+        # With repetitive letters
+
+        a_repetitve = "AAAAABBBCCCCDDDEEE"
+
+        print ("The size of the data is: {}\n".format(sys.getsizeof(a_repetitve)))
+        # returns The size of the data is: 67
+
+        print ("The content of the data is: {}\n".format(a_repetitve))
+        # returns The content of the data is:  AAAAABBBCCCCDDDEEE
+        
+        encoded_data, tree = huffman_encoding(a_repetitve)
+
+        print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+        # returns The size of the encoded data is: 32
+
+        print ("The content of the encoded data is: {}\n".format(encoded_data))
+        # returns The content of the encoded data is: 101010101011011011001010101111111111000000
+
+        decoded_data = huffman_decoding(encoded_data, tree)
+
+        print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+        # returns The size of the decoded data is: 67
+
+        print ("The content of the decoded data is: {}\n".format(decoded_data))
+         # returns The content of the decoded data is:  AAAAABBBCCCCDDDEEE
+
+
+
 # %%

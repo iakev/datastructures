@@ -181,4 +181,21 @@ print(intersection(linked_list_5,linked_list_6))
 # None -> union
 #no intersection
 
+#Test case one input empty
+linked_list_7 = LinkedList()
+linked_list_8 = LinkedList()
 
+element_5 = [2*i for i in range(10)]
+element_6 = []
+
+for i in element_5:
+    linked_list_7.append(i)
+
+for i in element_6:
+    linked_list_8.append(i)
+
+print(union(linked_list_7,linked_list_8))
+print(intersection(linked_list_7,linked_list_8))
+
+# 0 -> 2 -> 4 -> 6 -> 8 -> 10 -> 12 -> 14 -> 16 -> 18 ->
+#no intersection

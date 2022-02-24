@@ -57,6 +57,31 @@ chain = BlockChain()
 chain.appendblock(generate_random_string())
 chain.appendblock(generate_random_string())
 chain.appendblock(generate_random_string())
+print(chain.head)
+#return address of chain.head
+print(chain.num_blocks)
+#return 3
+print(chain.tail)
+# return address of chain.tail (the last block added)
+print(chain.head.timestamp)
+#return time chain block was created
 
+# %%
+# Test 2
+chain1 = BlockChain()
+print(chain1.head)
+print(chain1.num_blocks)
+print(chain1.tail)
 
-
+# %%
+# Test 3
+chain3 = BlockChain()
+chain3.appendblock("one")
+print(chain.tail.timestamp)
+#return time crated which is same as the ones below
+chain3.appendblock("two")
+print(chain.tail.timestamp)
+#return time crated which is same as the one above
+chain3.appendblock("three")
+print(chain.tail.timestamp)
+#return time crated which is same as the ones above

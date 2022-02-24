@@ -16,12 +16,16 @@ def find_files(suffix, path):
 
      NB: Please ensure the testdir is in the same folder as this .py file for optimum perfomance.  
     """
-    paths_lists = []
-    files = find_files_recursively(suffix,path,paths_lists) #call to initial recursion call
-    return files
+    try:
+      paths_lists = []
+      files = find_files_recursively(suffix,path,paths_lists) #call to initial recursion call
+      return files
+    except FileNotFoundError:
+      print("Input path does not exist, kindly check the path!")
 
 #helper recursive function
 def find_files_recursively(suffix,path,lists):
+  
     import os
     # base case when path refers to a file 
     if os.path.isfile(path):
@@ -56,3 +60,8 @@ suffix = ".py"
 path = "./testdir"
 print(find_files(suffix,path))
 # returns [] no file present
+
+#Test case 4 (no such path exists)
+suffix = ".c"
+path = "./dir"
+print(find_files(suffix,path))

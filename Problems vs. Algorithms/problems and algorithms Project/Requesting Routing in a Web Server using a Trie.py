@@ -8,7 +8,7 @@ class RouteTrieNode:
     
     def insert(self, path):
         # Insert the node as before
-        self.children[path] = RouteTrieNode()
+        self.children[path] = RouteTrieNode() 
 
 # A RouteTrie will store our routes and their associated handlers
 class RouteTrie:
@@ -22,17 +22,6 @@ class RouteTrie:
         # Make sure you assign the handler to only the leaf (deepest) node of this path
         # path is a list containing path parts
         node = self.root
-
-        # for part in path:
-        #     if part in node.children:
-        #         node = node.children[part]
-        #         continue
-        #     node.insert(part)
-        #     node = node.children[part]
-
-        # node.handler = handler
-
-        ## recursive insert
         self.insert_path_recursively(path,handler,node)
         
 
@@ -117,7 +106,6 @@ class Router:
         return path_list
 
 # %%
-# Here are some test cases and expected outputs you can use to test your implementation
 
 # create the router and add a route
 router = Router("root handler") # remove the 'not found handler' if you did not implement this
